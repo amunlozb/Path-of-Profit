@@ -12,4 +12,5 @@ export default {
 			charts: true,
 		}),
 	],
+	darkMode: 'class',
 }
