@@ -13,7 +13,7 @@ export default function Example() {
     }, [enabled])
 
     return (
-        <div className="py-16">
+        <div>
             <Switch
                 checked={enabled}
                 onChange={setEnabled}
