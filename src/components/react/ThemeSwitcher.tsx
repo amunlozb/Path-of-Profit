@@ -1,36 +1,24 @@
-import { useState, useEffect } from 'react';
-import { Switch } from '@headlessui/react';
+import { useState, useEffect } from 'react'
+import { Switch } from '@headlessui/react'
 
 export default function Example() {
-    const [enabled, setEnabled] = useState(false);
+    const [enabled, setEnabled] = useState(false)
 
-    // Function to set initial state from localStorage
     useEffect(() => {
-        const storedDarkMode = window.localStorage.getItem('dark-mode'); // Add 'window.' before 'localStorage'
-        if (storedDarkMode === null) {
-            // Dark mode preference is not set, so default to true
-            setEnabled(true);
-            window.localStorage.setItem('dark-mode', JSON.stringify(true)); // Add 'window.' before 'localStorage'
+        if (enabled) {
+            document.documentElement.classList.remove('dark')
         } else {
-            // Dark mode preference is set, parse and apply it
-            const darkModeEnabled = JSON.parse(storedDarkMode);
-            setEnabled(darkModeEnabled);
+            document.documentElement.classList.add('dark')
         }
-    }, []);
-
-    // Function to handle theme change
-    const handleThemeChange = (isChecked: boolean) => {
-        setEnabled(isChecked);
-        window.localStorage.setItem('dark-mode', JSON.stringify(isChecked)); // Add 'window.' before 'localStorage'
-    };
+    }, [enabled])
 
     return (
         <div className="py-16">
             <Switch
                 checked={enabled}
-                onChange={handleThemeChange}
-                className={`${enabled ? 'bg-teal-900' : 'bg-teal-700'}
-                relative inline-flex h-[38px] w-[74px] shrink-0 cursor-pointer rounded-full border-2 border-transparent transition-colors duration-200 ease-in-out focus:outline-none focus-visible:ring-2  focus-visible:ring-white/75`}
+                onChange={setEnabled}
+                className={`${enabled ? 'bg-yellow-400' : 'bg-slate-600'}
+            relative inline-flex h-[38px] w-[74px] shrink-0 cursor-pointer rounded-full border-2 border-transparent transition-colors duration-200 ease-in-out focus:outline-none focus-visible:ring-2  focus-visible:ring-white/75`}
             >
                 <span className="sr-only">Use setting</span>
                 <span
@@ -40,5 +28,5 @@ export default function Example() {
                 />
             </Switch>
         </div>
-    );
+    )
 }
