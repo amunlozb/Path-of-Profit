@@ -7,7 +7,7 @@ import ThemeSwitcher from '../components/react/ThemeSwitcher.tsx';
 ---
 
 <Layout title="Welcome to Path of Profit">
-	<main class="min-h-screen">
+	<main class="min-h-screen dark:text-white">
 		<h1>Welcome to <br><span class="text-gradient">Path of Profit</span></h1>
 		<ThemeSwitcher client:load></ThemeSwitcher>
 		<ul role="list" class="link-card-grid">
@@ -43,7 +43,6 @@ import ThemeSwitcher from '../components/react/ThemeSwitcher.tsx';
 		padding: 1rem;
 		width: 800px;
 		max-width: calc(100% - 2rem);
-		color: white;
 		font-size: 20px;
 		line-height: 1.6;
 	}
